@@ -9,7 +9,10 @@
   const pokemonId = props.url.split("/").slice(-2)[0];
   const handleClick = () => {
     router.push({
-      path: `/pokemon/${pokemonId}`,
+      path: `/pokemons/${pokemonId}`,
+      query: {
+        pokemonName: props.name,
+      },
     });
   };
 </script>
@@ -18,6 +21,7 @@
   <Card @card-click="handleClick">
     <CardHeader>
       <CardTitle>{{ props.name }}</CardTitle>
+      <CardDescription>{{ props.name }}</CardDescription>
     </CardHeader>
   </Card>
 </template>
