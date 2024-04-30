@@ -12,7 +12,10 @@
 
   const route = useRoute();
   const { data: pokemonsByTypeData, pending } = useFetch<PokemonsByTypeResult>(
-    () => `https://pokeapi.co/api/v2/type/${route.query.type}/`
+    () =>
+      route.query.typeId
+        ? `https://pokeapi.co/api/v2/type/${route.query.type}/`
+        : ""
   );
 
   const { data } = await useAsyncData<TypesResult>("allTypes", () =>
@@ -51,7 +54,10 @@
       </div>
     </section>
     <div v-if="pending" class="text-center text-2xl">Loading ...</div>
-    <PokemonCardSection :data="pokemonsByTypeData" v-if="pokemonsByTypeData && !pending"/>
+    <PokemonCardSection
+      :data="pokemonsByTypeData"
+      v-if="pokemonsByTypeData && !pending"
+    />
   </div>
 </template>
 
