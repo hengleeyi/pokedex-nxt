@@ -2,8 +2,8 @@
   import { useRoute } from "vue-router";
 
   const route = useRoute();
-
-  const capitalName = route.query.pokemonName as string;
+  const pokemonName = route.query.pokemonName as string;
+  const capitalName = pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
 </script>
 <template>
   <div class="p-4">

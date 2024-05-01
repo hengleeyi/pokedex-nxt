@@ -4,7 +4,6 @@
   import type { z } from "zod";
   import { badgeVariants } from "~/components/ui/badge";
   import { pokemonsByTypeSchema } from "~/schemas/pokemonsByType";
-  import PokemonCard from "~/components/PokemonCard.vue";
 
   type TypesResult = z.infer<typeof typesResultSchema>;
   type PokemonsByTypeResult = z.infer<typeof pokemonsByTypeSchema>;
@@ -13,7 +12,7 @@
   const route = useRoute();
   const { data: pokemonsByTypeData, pending } = useFetch<PokemonsByTypeResult>(
     () =>
-      route.query.typeId
+      route.query.type
         ? `https://pokeapi.co/api/v2/type/${route.query.type}/`
         : ""
   );

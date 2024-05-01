@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
     "shadcn-nuxt",
+    "@nuxt/image",
   ],
   shadcn: {
     prefix: "",
@@ -24,5 +25,17 @@ export default defineNuxtConfig({
   },
   experimental: {
     payloadExtraction: true,
-  }
+  },
+  image: {
+    providers: {
+      myProvider: {
+        name: "pokemon", // optional value to overrider provider name
+        provider: "~/providers/pokemon.ts", // Path to custom provider
+        options: {
+          // ... provider options
+          // baseURL: "https://raw.githubusercontent.com",
+        },
+      },
+    },
+  },
 });
